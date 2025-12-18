@@ -1,168 +1,967 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Autovertrieb Mannheim</title>
-  <meta name="description" content="Auto kaufen &amp; verkaufen in Mannheim. Geprüfte Fahrzeuge, faire Preise und transparente Abwicklung bei Autovertrieb Mannheim.">
-  <meta property="og:title" content="Autovertrieb Mannheim">
-  <meta property="og:description" content="Geprüfte Fahrzeuge, faire Preise und transparente Abwicklung in Mannheim.">
-  <link rel="canonical" href="https://autovertrieb-mannheim.de/">
-  <meta name="theme-color" content="#d62828">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autovertrieb Mannheim | Fahrzeuge, Ankauf & Service</title>
+  <meta name="description" content="Ihr zuverlässiger Autohändler in Mannheim: Fahrzeugverkauf, Ankauf, Service & Finanzierung – persönlich, fair und transparent. Sofort per WhatsApp kontaktieren!" />
+  
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Autovertrieb Mannheim | Fahrzeuge, Ankauf & Service" />
+  <meta property="og:description" content="Ihr zuverlässiger Autohändler in Mannheim: Fahrzeugverkauf, Ankauf, Service & Finanzierung – persönlich, fair und transparent." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.autovertrieb-mannheim.de" />
+  <meta property="og:image" content="https://www.autovertrieb-mannheim.de/images/og-image.jpg" />
+  
+  <style>
+    :root {
+      --brand-name: "Autovertrieb Mannheim";
+      --primary-color: #111111;
+      --accent-red: #D40000;
+      --bg-color: #FFFFFF;
+      --surface-color: #F5F6F8;
+      --text-color: #111111;
+      --muted-text: #4B5563;
+      --button-radius: 12px;
+      --max-width: 1120px;
+      --font: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.2s ease;
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section {
+      padding: 4rem 0;
+    }
+
+    .text-muted {
+      color: var(--muted-text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent-red);
+      color: white;
+      border: none;
+      border-radius: var(--button-radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: #b00000;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--accent-red);
+      color: var(--accent-red);
+    }
+
+    .btn-outline:hover {
+      background: var(--accent-red);
+      color: white;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--bg-color);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      z-index: 100;
+      transition: transform 0.3s ease;
+    }
+
+    .header-hidden {
+      transform: translateY(-100%);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-text-container {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .logo-main-text {
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--accent-red);
+      letter-spacing: -0.5px;
+    }
+
+    .logo-subtext {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--primary-color);
+      letter-spacing: 1px;
+      margin-top: 2px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      position: relative;
+    }
+
+    .car-silhouette {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .car-body {
+      fill: var(--primary-color);
+    }
+
+    .car-window {
+      fill: var(--accent-red);
+    }
+
+    .car-details {
+      stroke: var(--accent-red);
+      stroke-width: 1;
+      fill: none;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      font-weight: 600;
+      color: var(--muted-text);
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: var(--primary-color);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-red);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, var(--bg-color) 0%, var(--surface-color) 100%);
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 650px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      color: var(--muted-text);
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Trust */
+    .trust {
+      background: var(--surface-color);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .trust-item {
+      background: var(--bg-color);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    .trust-item h3 {
+      margin-top: 1rem;
+      font-size: 1.25rem;
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .service-card {
+      background: var(--surface-color);
+      padding: 1.75rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+      height: 100%;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .service-card h3 {
+      margin-top: 1rem;
+      color: var(--primary-color);
+    }
+
+    /* Vehicles */
+    .vehicles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .vehicle-card {
+      background: var(--surface-color);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .vehicle-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .vehicle-image {
+      height: 180px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .vehicle-info {
+      padding: 1.25rem;
+    }
+
+    .vehicle-info h3 {
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .vehicle-price {
+      color: var(--accent-red);
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Contact */
+    .contact {
+      background: var(--surface-color);
+    }
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    @media (min-width: 768px) {
+      .contact-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .contact-form h2,
+    .contact-info h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: var(--font);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent-red);
+      box-shadow: 0 0 0 3px rgba(212, 0, 0, 0.1);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin: 1.25rem 0;
+    }
+
+    .checkbox-group input {
+      margin-top: 0.25rem;
+      flex-shrink: 0;
+    }
+
+    .map-container {
+      margin-top: 2rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary-color);
+      color: white;
+      padding: 2.5rem 0 1.5rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+    }
+
+    .footer-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .footer-logo-main {
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: white;
+      letter-spacing: -0.5px;
+    }
+
+    .footer-logo-sub {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 1px;
+      margin-top: 2px;
+    }
+
+    .footer-icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.8);
+      font-weight: 600;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    /* Cookie Banner */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--surface-color);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+      z-index: 999;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .cookie-banner.show {
+      transform: translateY(0);
+    }
+
+    .cookie-text {
+      max-width: 600px;
+      margin-right: 1rem;
+    }
+
+    .cookie-btn {
+      background: var(--accent-red);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: var(--button-radius);
+      font-weight: 600;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-color);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .section {
+        padding: 3rem 0;
+      }
+
+      .trust-grid,
+      .services-grid,
+      .vehicles-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cookie-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      .cookie-text {
+        margin-right: 0;
+      }
+      
+      .logo-main-text {
+        font-size: 1.25rem;
+      }
+      
+      .logo-subtext {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
 </head>
-<body id="top">
-  <div class="page">
-    <header class="top-bar">
-      <div class="container">
-        <div class="brand">
-          <div class="logo-mark" aria-hidden="true"></div>
-          <div class="logo">
-            <span class="logo-text">Autovertrieb</span>
-            <span class="logo-accent">Mannheim</span>
-          </div>
-        </div>
-        <nav class="nav">
-          <a href="index.html" class="active">Start</a>
-          <a href="vehicles.html">Unser Fahrzeug</a>
-          <a href="contact.html">Kontakt</a>
-          <a href="impressum.html">Impressum</a>
-          <a href="datenschutz.html">Datenschutz</a>
-          <a class="btn nav-whatsapp" href="https://wa.me/4917661994091" target="_blank" rel="noopener">WhatsApp</a>
-        </nav>
-      </div>
-    </header>
+<body>
 
-    <main>
-      <section class="hero home-hero">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <p class="eyebrow">Start</p>
-            <h1>Autovertrieb Mannheim</h1>
-            <p class="subhead">Zuverlässiger Fahrzeughandel in Mannheim – transparent &amp; persönlich.</p>
-            <div class="hero-actions">
-              <a class="btn primary" href="vehicles.html">Fahrzeuge ansehen</a>
-              <a class="btn ghost" href="contact.html">Kontakt</a>
-            </div>
-            <div class="trust-points">
-              <div class="pill">Geprüfte Fahrzeuge</div>
-              <div class="pill">Transparente Abwicklung</div>
-              <div class="pill">Persönliche Beratung</div>
-            </div>
-          </div>
-          <div class="hero-card">
-            <div class="card-header">
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-            <div class="card-body">
-              <p class="card-title">Direkter Kontakt</p>
-              <p class="card-text">Wir begleiten Sie vom ersten Gespräch bis zur Übergabe – ruhig, klar und zuverlässig.</p>
-              <ul class="card-list">
-                <li>Telefonisch und per WhatsApp erreichbar</li>
-                <li>Klare Informationen zu jedem Fahrzeug</li>
-                <li>Termin nach Absprache in Mannheim</li>
-              </ul>
-              <div class="card-actions">
-                <a class="btn primary full" href="contact.html">Termin anfragen</a>
-                <a class="btn subtle full" href="https://wa.me/4917661994091" target="_blank" rel="noopener">WhatsApp öffnen</a>
-              </div>
-              <div class="microcopy">Antwort in der Regel innerhalb eines Werktags.</div>
-            </div>
-          </div>
+  <!-- Header -->
+  <header id="main-header">
+    <div class="container header-inner">
+      <a href="#" class="logo" aria-label="Zur Startseite">
+        <div class="logo-icon">
+          <svg class="car-silhouette" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- Auto Karosserie (Schwarz) -->
+            <path class="car-body" d="M20,60 L80,60 L85,45 L90,40 L90,30 L85,25 L80,20 L20,20 L15,25 L10,30 L10,40 L15,45 L20,60 Z"/>
+            
+            <!-- Frontscheibe (Rot) -->
+            <path class="car-window" d="M25,25 L75,25 L80,30 L80,35 L70,35 L70,40 L30,40 L30,35 L20,35 L20,30 Z"/>
+            
+            <!-- Seitenscheiben (Rot) -->
+            <rect class="car-window" x="25" y="35" width="15" height="15" rx="2"/>
+            <rect class="car-window" x="60" y="35" width="15" height="15" rx="2"/>
+            
+            <!-- Details (Rote Linien) -->
+            <line class="car-details" x1="25" y1="60" x2="75" y2="60"/>
+            <line class="car-details" x1="40" y1="20" x2="40" y2="60"/>
+            <line class="car-details" x1="60" y1="20" x2="60" y2="60"/>
+            
+            <!-- Räder -->
+            <circle class="car-body" cx="30" cy="65" r="8"/>
+            <circle class="car-body" cx="70" cy="65" r="8"/>
+            <circle class="car-details" cx="30" cy="65" r="4"/>
+            <circle class="car-details" cx="70" cy="65" r="4"/>
+            
+            <!-- Frontgrill -->
+            <line class="car-details" x1="85" y1="35" x2="90" y2="35"/>
+            <line class="car-details" x1="85" y1="40" x2="90" y2="40"/>
+            <line class="car-details" x1="85" y1="45" x2="90" y2="45"/>
+          </svg>
         </div>
-      </section>
-
-      <section class="section" id="about">
-        <div class="container section-grid">
-          <div>
-            <p class="eyebrow">Über uns</p>
-            <h2>Ruhig, klar, erreichbar.</h2>
-            <p class="section-lead">
-              Wir beraten ohne Druck, stimmen uns mit Ihnen telefonisch oder per WhatsApp ab und organisieren Termine nach Absprache. Unsere Abläufe sind transparent und nachvollziehbar.
-            </p>
-            <div class="pill-group">
-              <div class="info-pill">
-                <span class="pill-title">Vertrauen</span>
-                <span class="pill-text">Klare Informationen zu jedem Fahrzeug und Schritt.</span>
-              </div>
-              <div class="info-pill">
-                <span class="pill-title">Erreichbarkeit</span>
-                <span class="pill-text">Telefon oder WhatsApp – Sie wählen den Kanal.</span>
-              </div>
-              <div class="info-pill">
-                <span class="pill-title">Termin nach Absprache</span>
-                <span class="pill-text">Individuelle Besichtigung in Mannheim.</span>
-              </div>
-            </div>
-          </div>
-          <div class="note-card">
-            <h3>Wie wir arbeiten</h3>
-            <div class="process">
-              <div class="process-step">
-                <div class="process-icon">1</div>
-                <div>
-                  <p class="process-title">Anfrage</p>
-                  <p class="process-text">Kontakt per Telefon, E-Mail oder WhatsApp.</p>
-                </div>
-              </div>
-              <div class="process-step">
-                <div class="process-icon">2</div>
-                <div>
-                  <p class="process-title">Abstimmung</p>
-                  <p class="process-text">Wünsche besprechen, passende Fahrzeuge vorstellen.</p>
-                </div>
-              </div>
-              <div class="process-step">
-                <div class="process-icon">3</div>
-                <div>
-                  <p class="process-title">Übergabe</p>
-                  <p class="process-text">Termin vor Ort und transparente Unterlagen.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="logo-text-container">
+          <div class="logo-main-text">AUTO VERTRIEB</div>
+          <div class="logo-subtext">MANN HEIM</div>
         </div>
-      </section>
-    </main>
+      </a>
+      
+      <button class="mobile-menu-btn" aria-label="Menü öffnen" id="mobile-menu-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12h18M3 6h18M3 18h18"/>
+        </svg>
+      </button>
+      
+      <nav>
+        <ul id="main-nav">
+          <li><a href="#leistungen">Leistungen</a></li>
+          <li><a href="#fahrzeuge">Fahrzeuge</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+      <a href="https://wa.me/4917661994091?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Fahrzeug%20und%20h%C3%A4tte%20eine%20Frage." target="_blank" rel="noopener noreferrer" class="btn" aria-label="Per WhatsApp kontaktieren">WhatsApp</a>
+    </div>
+  </header>
 
-    <footer class="footer">
-      <div class="container footer-grid">
-        <div>
-          <p class="footer-logo">Autovertrieb Mannheim</p>
-          <p class="footer-text">Neustadter Str. 4 · 68309 Mannheim<br>
-            Telefon <a href="tel:+4917661994091">+49 176 61994091</a><br>
-            WhatsApp <a href="https://wa.me/4917661994091" target="_blank" rel="noopener">Chat starten</a>
-          </p>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Fahrzeuge. Ankauf. Service.</h1>
+        <p>Ihr zuverlässiger Partner in Mannheim – fair, transparent, persönlich. Wir bieten geprüfte Gebrauchtwagen, faire Ankaufsangebote und umfassenden Service.</p>
+        <div class="hero-cta">
+          <a href="https://wa.me/4917661994091?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Fahrzeug%20und%20h%C3%A4tte%20eine%20Frage." target="_blank" rel="noopener noreferrer" class="btn" aria-label="Per WhatsApp anfragen">Per WhatsApp anfragen</a>
+          <a href="#kontakt" class="btn btn-outline" aria-label="Kontaktformular öffnen">Kontakt aufnehmen</a>
         </div>
-        <div class="footer-links">
-          <a href="impressum.html">Impressum</a>
-          <a href="datenschutz.html">Datenschutz</a>
-          <a href="#top">Nach oben</a>
-        </div>
-      </div>
-      <p class="copyright">© 2025 Autovertrieb Mannheim</p>
-    </footer>
-  </div>
-
-  <div class="floating-whatsapp">
-    <a class="btn primary" href="https://wa.me/4917661994091" target="_blank" rel="noopener">WhatsApp</a>
-  </div>
-
-  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie-Hinweis">
-    <div class="cookie-content">
-      <p>Wir verwenden technisch notwendige Cookies, um die Website bereitzustellen. Mit Klick auf „Akzeptieren“ stimmen Sie dem zu.</p>
-      <div class="cookie-actions">
-        <button class="btn ghost" id="cookieReject">Ablehnen</button>
-        <button class="btn primary" id="cookieAccept">Akzeptieren</button>
       </div>
     </div>
+  </section>
+
+  <!-- Trust -->
+  <section class="section trust">
+    <div class="container">
+      <h2>Warum Kunden uns vertrauen</h2>
+      <div class="trust-grid">
+        <div class="trust-item">
+          <h3>Persönliche Beratung</h3>
+          <p>Individuelle Betreuung vor Ort – ohne Druck, mit Zeit für Ihre Fragen. Wir nehmen uns Zeit für Ihre Wünsche.</p>
+        </div>
+        <div class="trust-item">
+          <h3>Geprüfte Fahrzeuge</h3>
+          <p>Jedes Fahrzeug wird vor Verkauf technisch und optisch geprüft. Sicherheit und Qualität stehen an erster Stelle.</p>
+        </div>
+        <div class="trust-item">
+          <h3>Schnelle Abwicklung</h3>
+          <p>Von der Besichtigung bis zur Übergabe – alles aus einer Hand. Transparente Prozesse und klare Kommunikation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leistungen -->
+  <section id="leistungen" class="section">
+    <div class="container">
+      <h2>Unsere Leistungen</h2>
+      <p class="text-muted">Umfassende Dienstleistungen rund um Ihr Fahrzeug</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Fahrzeugverkauf</h3>
+          <p>Ausgewählte Gebrauchtwagen in Top-Zustand – geprüft und garantiert. Von Kompaktwagen bis Familienautos.</p>
+        </div>
+        <div class="service-card">
+          <h3>Fahrzeugankauf</h3>
+          <p>Wir kaufen Ihr Fahrzeug – fair bewertet, sofort bezahlt. Kostenlose und unverbindliche Bewertung.</p>
+        </div>
+        <div class="service-card">
+          <h3>Finanzierung</h3>
+          <p>Individuelle Finanzierungsmodelle – auch ohne Schufa-Eintrag möglich. Flexible Ratenzahlungen.</p>
+        </div>
+        <div class="service-card">
+          <h3>Werkstatt & Service</h3>
+          <p>Kleine Reparaturen, Inspektionen und Wartung – direkt bei uns. Mit Originalteilen und erfahrenen Mechanikern.</p>
+        </div>
+        <div class="service-card">
+          <h3>Probefahrten</h3>
+          <p>Testen Sie Ihr Wunschfahrzeug unverbindlich vor Ort. Vereinbaren Sie einfach einen Termin.</p>
+        </div>
+        <div class="service-card">
+          <h3>Inzahlungnahme</h3>
+          <p>Ihr Altfahrzeug wird fair bewertet und angerechnet. Perfekte Lösung beim Fahrzeugwechsel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fahrzeuge -->
+  <section id="fahrzeuge" class="section">
+    <div class="container">
+      <h2>Aktuelle Fahrzeuge</h2>
+      <p class="text-muted">Unsere aktuellen Angebote – alle Fahrzeuge werden vor Verkauf geprüft</p>
+      <div class="vehicles-grid">
+        <!-- Platzhalter Fahrzeuge -->
+        <div class="vehicle-card">
+          <div class="vehicle-image">VW Golf VII</div>
+          <div class="vehicle-info">
+            <h3>VW Golf VII</h3>
+            <p>1.4 TSI • 90.000 km • Erstzulassung 2019</p>
+            <p class="vehicle-price">15.900 €</p>
+          </div>
+        </div>
+        <div class="vehicle-card">
+          <div class="vehicle-image">BMW 320d</div>
+          <div class="vehicle-info">
+            <h3>BMW 320d</h3>
+            <p>2.0 Diesel • 85.000 km • Erstzulassung 2020</p>
+            <p class="vehicle-price">28.500 €</p>
+          </div>
+        </div>
+        <div class="vehicle-card">
+          <div class="vehicle-image">Mercedes C-Klasse</div>
+          <div class="vehicle-info">
+            <h3>Mercedes C-Klasse</h3>
+            <p>2.1 Diesel • 70.000 km • Erstzulassung 2021</p>
+            <p class="vehicle-price">32.900 €</p>
+          </div>
+        </div>
+        <div class="vehicle-card">
+          <div class="vehicle-image">Audi A4</div>
+          <div class="vehicle-info">
+            <h3>Audi A4</h3>
+            <p>2.0 TFSI • 65.000 km • Erstzulassung 2022</p>
+            <p class="vehicle-price">35.700 €</p>
+          </div>
+        </div>
+        <div class="vehicle-card">
+          <div class="vehicle-image">Toyota RAV4</div>
+          <div class="vehicle-info">
+            <h3>Toyota RAV4</h3>
+            <p>Hybrid • 50.000 km • Erstzulassung 2023</p>
+            <p class="vehicle-price">38.900 €</p>
+          </div>
+        </div>
+        <div class="vehicle-card">
+          <div class="vehicle-image">Ford Focus</div>
+          <div class="vehicle-info">
+            <h3>Ford Focus</h3>
+            <p>1.0 EcoBoost • 45.000 km • Erstzulassung 2023</p>
+            <p class="vehicle-price">19.800 €</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section id="kontakt" class="section contact">
+    <div class="container">
+      <div class="contact-content">
+        <div class="contact-form">
+          <h2>Kontakt aufnehmen</h2>
+          <form id="contact-form" method="POST">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" id="name" name="name" required placeholder="Ihr Name" />
+            </div>
+            <div class="form-group">
+              <label for="email">E-Mail *</label>
+              <input type="email" id="email" name="email" required placeholder="ihre@email.de" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefon (optional)</label>
+              <input type="tel" id="phone" name="phone" placeholder="+49 176 61994091" />
+            </div>
+            <div class="form-group">
+              <label for="message">Nachricht *</label>
+              <textarea id="message" name="message" required placeholder="Ihre Nachricht an uns..."></textarea>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="privacy" name="privacy" required />
+              <label for="privacy">Ich stimme der Datenschutzerklärung zu. *</label>
+            </div>
+            <button type="submit" class="btn">Anfrage senden</button>
+          </form>
+        </div>
+        <div class="contact-info">
+          <h2>Kontaktdaten</h2>
+          <p><strong>Autovertrieb Mannheim</strong><br>
+            Neustadter Str. 4<br>
+            68309 Mannheim, Deutschland</p>
+          <p>
+            <strong>Telefon:</strong><br>
+            <a href="tel:+4917661994091">+49 176 61994091</a>
+          </p>
+          <p>
+            <strong>E-Mail:</strong><br>
+            <a href="mailto:kontakt@autovertrieb-mannheim.de">kontakt@autovertrieb-mannheim.de</a>
+          </p>
+          <p>
+            <strong>Öffnungszeiten:</strong><br>
+            Mo-Fr: 9:00-18:00 Uhr<br>
+            Sa: 10:00-14:00 Uhr
+          </p>
+          <p>
+            <a href="https://wa.me/4917661994091?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Fahrzeug%20und%20h%C3%A4tte%20eine%20Frage." target="_blank" rel="noopener noreferrer" class="btn" style="width: fit-content;">Per WhatsApp schreiben</a>
+          </p>
+          <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2585.595990435878!2d8.503081576132352!3d49.48192397145673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c8c22b7f2d4d%3A0x4b8df6d98a5ce725!2sNeustadter%20Str.%204%2C%2068309%20Mannheim!5e0!3m2!1sde!2sde!4v1717000000000!5m2!1sde!2sde" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Standort auf Google Maps"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-logo" aria-label="Logo Autovertrieb Mannheim">
+        <svg class="footer-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#FFFFFF" d="M20,60 L80,60 L85,45 L90,40 L90,30 L85,25 L80,20 L20,20 L15,25 L10,30 L10,40 L15,45 L20,60 Z"/>
+          <path fill="#D40000" d="M25,25 L75,25 L80,30 L80,35 L70,35 L70,40 L30,40 L30,35 L20,35 L20,30 Z"/>
+          <rect fill="#D40000" x="25" y="35" width="15" height="15" rx="2"/>
+          <rect fill="#D40000" x="60" y="35" width="15" height="15" rx="2"/>
+          <circle fill="#FFFFFF" cx="30" cy="65" r="8"/>
+          <circle fill="#FFFFFF" cx="70" cy="65" r="8"/>
+        </svg>
+        <div class="footer-logo-text">
+          <div class="footer-logo-main">AUTO VERTRIEB</div>
+          <div class="footer-logo-sub">MANN HEIM</div>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#impressum" aria-label="Impressum">Impressum</a>
+        <a href="#datenschutz" aria-label="Datenschutz">Datenschutz</a>
+        <a href="#kontakt" aria-label="Kontakt">Kontakt</a>
+      </div>
+      <p style="color: rgba(255,255,255,0.7); font-size: 0.875rem; text-align: center;">
+        © 2024 Autovertrieb Mannheim. Alle Rechte vorbehalten.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Cookie Banner -->
+  <div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie-Hinweis">
+    <div class="cookie-text">Diese Website verwendet ausschließlich technisch notwendige Cookies, um die Funktionalität der Seite zu gewährleisten.</div>
+    <button id="cookie-accept" class="cookie-btn" aria-label="Cookie-Hinweis bestätigen">OK</button>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    // Cookie Banner
+    const cookieBanner = document.getElementById('cookie-banner');
+    const cookieAccept = document.getElementById('cookie-accept');
+
+    // Show cookie banner after 1 second if not accepted
+    setTimeout(() => {
+      if (!localStorage.getItem('cookiesAccepted')) {
+        cookieBanner.classList.add('show');
+      }
+    }, 1000);
+
+    cookieAccept.addEventListener('click', () => {
+      localStorage.setItem('cookiesAccepted', 'true');
+      cookieBanner.classList.remove('show');
+    });
+
+    // Mobile menu
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mainNav = document.getElementById('main-nav');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mainNav.classList.toggle('show');
+      mobileMenuBtn.setAttribute('aria-expanded', mainNav.classList.contains('show'));
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mainNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        mainNav.classList.remove('show');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        // Close mobile menu if open
+        if (mainNav.classList.contains('show')) {
+          mainNav.classList.remove('show');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+        
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Form submission
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(this);
+        const formObject = Object.fromEntries(formData);
+        
+        // Here you would typically send the data to a server
+        // For demo purposes, we'll just show an alert
+        alert('Vielen Dank für Ihre Anfrage! Wir werden uns schnellstmöglich bei Ihnen melden.');
+        
+        // Reset form
+        this.reset();
+      });
+    }
+
+    // Hide header on scroll down, show on scroll up
+    let lastScrollTop = 0;
+    const header = document.getElementById('main-header');
+    
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (scrollTop > lastScrollTop && scrollTop > 100) {
+        // Scrolling down
+        header.classList.add('header-hidden');
+      } else {
+        // Scrolling up
+        header.classList.remove('header-hidden');
+      }
+      
+      lastScrollTop = scrollTop;
+    });
+  </script>
 </body>
 </html>
